@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: task-manager-api
+    env: python
+    buildCommand: "bash build.sh"
+    startCommand: "cd backend && gunicorn -w 4 -b 0.0.0.0:$PORT app:app"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        scope: build,runtime
+
+  - type: static
+    name: task-manager-web
+    buildDir: frontend/build
+    routes:
+      - path: /*
+        destination: /index.html

@@ -79,6 +79,29 @@ npm start
 The API runs at `http://localhost:5000`.
 The React app runs at `http://localhost:3000`.
 
+## Sharing The App
+
+For a single server that can be shared, build the frontend first:
+
+```bash
+cd frontend
+npm run build
+```
+
+Then run Flask with Waitress:
+
+```bash
+cd backend
+pip install -r requirements.txt
+python serve.py
+```
+
+Visit `http://localhost:5000`.
+
+For the same Wi-Fi network, share `http://YOUR_LOCAL_IP:5000`.
+For public internet access, use a tunnel or deploy the app to a host. The app is
+now set up so both the frontend and API work from the same public URL.
+
 ## Basic Test Flow
 
 1. Register a user.

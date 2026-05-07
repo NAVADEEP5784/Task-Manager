@@ -1,0 +1,10 @@
+[build]
+  command = "pip install --upgrade pip && pip install -r backend/requirements.txt && cd frontend && npm install --legacy-peer-deps && npm run build"
+
+[env]
+  PYTHONUNBUFFERED = "1"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

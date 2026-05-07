@@ -22,6 +22,39 @@ npm start
 
 Expected URL: `http://localhost:3000`
 
+## One Server For Sharing
+
+Build the frontend:
+
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+Run the backend server:
+
+```bash
+cd backend
+pip install -r requirements.txt
+python serve.py
+```
+
+Open:
+
+```text
+http://localhost:5000
+```
+
+People on the same Wi-Fi can use your computer's local IP address:
+
+```text
+http://YOUR_LOCAL_IP:5000
+```
+
+For people outside your network, use a tunnel or deploy the app. A tunnel gives
+you a temporary public URL that forwards to port `5000`.
+
 ## Demo Account
 
 Create one from the register page:

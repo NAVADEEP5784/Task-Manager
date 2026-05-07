@@ -33,6 +33,43 @@ npm start
 
 React opens at `http://localhost:3000`.
 
+## Running As One Live Server
+
+For sharing, build React and let Flask serve the built files.
+
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+Then run the backend with Waitress:
+
+```bash
+cd backend
+pip install -r requirements.txt
+python serve.py
+```
+
+Open `http://localhost:5000`.
+
+If another device is on the same network, it can use:
+
+```text
+http://YOUR_LOCAL_IP:5000
+```
+
+On Windows, find your local IP with:
+
+```bash
+ipconfig
+```
+
+Look for the IPv4 address under your active Wi-Fi or Ethernet adapter.
+
+For access from anywhere on the internet, put port `5000` behind a public tunnel
+or deploy the app to a hosting service. Do not share the Flask debug server.
+
 ## Optional Frontend API URL
 
 By default the frontend calls `http://localhost:5000/api`.
