@@ -1,16 +1,18 @@
 # Railway Deployment Configuration
-# This file tells Railway how to build and run your application
+# https://docs.railway.com/reference/config-as-code
 
-# Build settings
-build:
-  builder: dockerfile
-  
-# Service configuration
-services:
-  web:
-    startCommand: "gunicorn --chdir backend app:app"
-    
-# Environment variables (set these in Railway dashboard)
-# DATABASE_URL - Your PostgreSQL connection string (if using Railway Postgres)
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "sh -c 'gunicorn --bind 0.0.0.0:$PORT --workers 4 --timeout 120 app:app'"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+# Environment variables to set in the Railway dashboard:
+# DATABASE_URL - Your PostgreSQL connection string, if using Railway Postgres
 # JWT_SECRET_KEY - Your JWT secret key
-# FLASK_ENV - Set to "production"
+# FLASK_ENV - production
